@@ -20,7 +20,7 @@ public class TeamDao {
 	{
 		Connection c= MyConnection.getConnection();
 		
-		PreparedStatement ps= c.prepareStatement("insert into team values(?,?,?,?)");
+		PreparedStatement ps= c.prepareStatement("insert into jdbcadv values(?,?,?,?)");
 		ps.setInt(1,t.getTeamid());
 		ps.setString(2, t.getTeamname());
 		ps.setString(3, t.getOwnername());

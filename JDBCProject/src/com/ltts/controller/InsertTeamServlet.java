@@ -1,16 +1,15 @@
 package com.ltts.controller;
 
 import java.io.IOException;
-import java.sql.Date;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import com.ltts.dao.TeamDao;
-import com.ltts.model.Player;
 import com.ltts.model.Team;
+
 
 /**
  * Servlet implementation class InsertTeamServlet
@@ -41,13 +40,14 @@ public class InsertTeamServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		int teamid=Integer.parseInt(request.getParameter("teamid"));
+		int team_id=Integer.parseInt(request.getParameter("team_id"));
 		String teamname=request.getParameter("teamname");
 		String ownername=request.getParameter("ownername");
 		String coachname=request.getParameter("coachname");
-		Team t=new Team(teamid,teamname,ownername,coachname);
-		System.out.println("Inside Servlet: "+t);
-		TeamDao td=new TeamDao();
+		Team t=new Team(team_id,teamname,coachname, coachname);
+		System.out.println("inserted.." +t);
+		TeamDao td = new TeamDao();
+		
 		boolean b=false;
 		try {
 			b=td.insertTeam(t); // Control TRanfers to Dao file
@@ -56,5 +56,7 @@ public class InsertTeamServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
+
 }
